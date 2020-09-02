@@ -12,9 +12,30 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.youtube.com/*"],
-      "js": ["relyify.js"]
+      "matches": ["*://*.youtube.com/*","*://www.dailymotion.com/*"],
+      "js": ["relyify.js","beastify.js"]
     }
+  ],
+
+
+  
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "theme_icons": [{
+        "light": "icons/icon.png",
+        "dark": "icons/icon.png",
+        "size": 32
+    }],
+    "default_title": "Beastify",
+    "default_popup": "popup/choose_beast.html"
+  },
+
+  "web_accessible_resources": [
+    "beasts/*.jpg"
   ]
 
 }
