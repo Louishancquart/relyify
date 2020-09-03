@@ -11,15 +11,15 @@ html, body {
  font-size: 10pt;
 }
 
-#popup-content em {
+ em {
   float: right;
   font-weight: bold;
   font-size: 15pt;
-  text-align: center;
-  margin: auto;
+  /* text-align: center;
+  margin: auto; */
 }
 
-#popup-content em a{
+ em a{
   text-decoration: none;
 }
 
