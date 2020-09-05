@@ -10,47 +10,30 @@
 <body>
   <div id="popup-content">
     <div class="lineResult">
-      <span>123</span>
       <span>&uarr;</span>
-      <!-- <span>|</span> -->
-      <span><a href="#">My document title</a></span>
-      <em><a href="#">+</a></em>
-    </div>
-
-    <div class="lineResult">
       <span>123</span>
-      <span>&uarr;</span>
-      <!-- <span>|</span> -->
+      <span>&darr;</span>
       <span><a href="#">My document title</a></span>
-      <em><a href="#">+</a></em>
     </div>
+    <div id="add" class="button reset">Add</div>
 
-    <div class="lineResult">
-      <span>123</span>
-      <span>&uarr;</span>
-      <!-- <span>|</span> -->
-      <span><a href="#">My document title</a></span>
-      <em><a href="#">+</a></em>
-    </div>
+  <div id="add-form">
+    <form class="add-review" method="POST" action="http://localhost:8080/review">
+     <input type="hidden" name="videoId" value="https://www.youtube.com/watch?v=cWn6yUY9Etk" />
+      
+     <span><label for="true">True</label>
+      <input type="radio" id="true" name="true" value="true" >
+      <label for="false">False</label>
+      <input type="radio" id="false" name="true" value="false" checked>
 
-    <div class="lineResult">
-      <span>123</span>
-      <span>&uarr;</span>
-      <!-- <span>|</span> -->
-      <span><a href="#">My document title</a></span>
-      <em><a href="#">+</a></em>
-    </div>
+    </span>
 
-
-    <div class="lineResult">
-      <span>123</span>
-      <span>&uarr;</span>
-      <!-- <span>|</span> -->
-      <span><a href="#">My document title</a></span>
-      <em><a href="#">+</a></em>
-    </div>
-
-    <div class="button reset">Add</div>
+      <input type="hidden" name="reviewedMediaUrl" value="https://www.youtube.com/watch?v=cWn6yUY9Etk" />
+      <input type="text" name="referenceUrl" placeholder="https://www.moonhooch.com/" value=""/>
+      <input type="text" name="description" placeholder="your reasons..." value=""/>
+    </form>
+    <button type="submit" id="submit">submit</button>
+  </div>
   </div>
 
 

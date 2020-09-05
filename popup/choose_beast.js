@@ -12,6 +12,9 @@ const hidePage = `body > :not(.beastify-image) {
  */
 function listenForClicks() {
   document.addEventListener("click", (e) => {
+    if (e.target.id == "add" ) {
+      document.getElementById("add-form").style.display =true;
+    }
 
     /**
      * Given the name of a beast, get the URL to the corresponding image.
@@ -70,6 +73,8 @@ function listenForClicks() {
         .then(beastify)
         .catch(reportError);
     }
+
+
     else if (e.target.classList.contains("reset")) {
       browser.tabs.query({active: true, currentWindow: true})
         .then(reset)
