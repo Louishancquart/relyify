@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "4937ce3c-6d5d-44d2-acca-79a5ed4bdc63",
+		"name": "RLTube",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Review",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"review\": {\n\t\t\"videoId\": \"L3cpFYNPYz8\",\n\t\t\"type\": \"CONTROVERSIAL\",\n\t\t\"reviewedMediaUrl\": \"666\",\n\t\t\"referenceUrl\": \"https://google.com\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{server}}/reviews",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Increment Review",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"review\": {\n\t\t\"videoId\": \"L3cpFYNPYz8\",\n\t\t\"type\": \"CONTROVERSIAL\",\n\t\t\"reviewedMediaUrl\": \"666\",\n\t\t\"referenceUrl\": \"https://google.com\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{server}}/reviews",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a uniq review",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all reviews for a video",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}

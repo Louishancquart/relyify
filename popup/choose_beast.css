@@ -23,6 +23,16 @@ html, body {
   text-decoration: none;
 }
 
+.add-review input[type=text]{
+  margin: 10px;
+  width: 250px;
+}
+
+#submit{
+  margin: 10px;
+  float: right;
+}
+
 .button {
   margin: 3% auto;
   padding: 4px;
@@ -45,4 +55,9 @@ html, body {
 
 .reset:hover {
   background-color: #EAEA9D;
+}
+
+
+div #add-form{
+  display: none;
 }

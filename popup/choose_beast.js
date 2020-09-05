@@ -70,10 +70,16 @@ function listenForClicks() {
         .then(beastify)
         .catch(reportError);
     }
+
+
     else if (e.target.classList.contains("reset")) {
-      browser.tabs.query({active: true, currentWindow: true})
-        .then(reset)
-        .catch(reportError);
+      let addButton = document.getElementById("add-form");
+      addButton.style.display = (addButton.style.display == "block"?"none": "block")
+      
+
+      // browser.tabs.query({active: true, currentWindow: true})
+      //   .then(reset)
+      //   .catch(reportError);
     }
   });
 }
