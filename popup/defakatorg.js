@@ -14,7 +14,7 @@ browser.tabs.query({currentWindow: true, active: true}).then((tabs) => {
 function loadReviews() {
   $.get("http://localhost:8080/reviews", function (data, status) {
 
-    data[pageUrl].forEach(element => {
+    data[encodeURIComponent(pageUrl)].forEach(element => {
       $("#reviews-list").append(
         "<div class='review-result'>"
         + "<span><a href='#'>&uarr;</a></span>"
@@ -75,7 +75,7 @@ function listenForClicks() {
     if (e.target.id == "submit") {
       var formData = JSON.stringify({
         review: {
-          videoId: pageUrl,
+          videoId: encodeURIComponent(pageUrl),
           type: $("#trustworthy").val() == "on",
           reviewedMediaUrl: pageUrl,
           referenceUrl: $("#referenceUrl").val(),
