@@ -11,10 +11,13 @@ const hidePage = `body > :not(.beastify-image) {
  * the content script in the page.
  */
 function listenForClicks() {
+
+
+
+
+
   document.addEventListener("click", (e) => {
-    if (e.target.id == "add" ) {
-      document.getElementById("add-form").style.display =true;
-    }
+
 
     /**
      * Given the name of a beast, get the URL to the corresponding image.
@@ -36,7 +39,7 @@ function listenForClicks() {
      * send a "beastify" message to the content script in the active tab.
      */
     function beastify(tabs) {
-      browser.tabs.insertCSS({code: hidePage}).then(() => {
+      browser.tabs.insertCSS({ code: hidePage }).then(() => {
         let url = beastNameToURL(e.target.textContent);
         browser.tabs.sendMessage(tabs[0].id, {
           command: "beastify",
@@ -50,7 +53,7 @@ function listenForClicks() {
      * send a "reset" message to the content script in the active tab.
      */
     function reset(tabs) {
-      browser.tabs.removeCSS({code: hidePage}).then(() => {
+      browser.tabs.removeCSS({ code: hidePage }).then(() => {
         browser.tabs.sendMessage(tabs[0].id, {
           command: "reset",
         });
@@ -69,7 +72,7 @@ function listenForClicks() {
      * then call "beastify()" or "reset()" as appropriate.
      */
     if (e.target.classList.contains("beast")) {
-      browser.tabs.query({active: true, currentWindow: true})
+      browser.tabs.query({ active: true, currentWindow: true })
         .then(beastify)
         .catch(reportError);
     }
@@ -77,13 +80,49 @@ function listenForClicks() {
 
     else if (e.target.classList.contains("reset")) {
       let addButton = document.getElementById("add-form");
-      addButton.style.display = (addButton.style.display == "block"?"none": "block")
-      
+      addButton.style.display = (addButton.style.display == "block" ? "none" : "block")
+
 
       // browser.tabs.query({active: true, currentWindow: true})
       //   .then(reset)
       //   .catch(reportError);
     }
+
+    /**
+     * Hide / Show form on click "Add"
+     */
+    if (e.target.id == "add") {
+      document.getElementById("add-form").style.display = true;
+    }
+
+    /**
+     * submit form 
+     */
+    if (e.target.id == "submit") {
+      let contentUrl = window.location.href 
+      var formData = JSON.stringify({review: {
+        videoId: contentUrl,
+        type: $("#trustworthy").val() == "on",
+        reviewedMediaUrl: contentUrl,
+        referenceUrl: $("#referenceUrl").val(),
+        description: $("#description").val(),
+        votes: 0
+      }});
+
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/reviews",
+        data: formData,
+        // success: function () { alert("success") },
+        // error: function () { alert("error: " +formData) },
+        dataType: "json",
+        contentType: "application/json"
+      });
+
+    }
+
+
+
   });
 }
 
@@ -102,6 +141,6 @@ function reportExecuteScriptError(error) {
  * and add a click handler.
  * If we couldn't inject the script, handle the error.
  */
-browser.tabs.executeScript({file: "/content_scripts/beastify.js"})
-.then(listenForClicks)
-.catch(reportExecuteScriptError);
+browser.tabs.executeScript({ file: "/content_scripts/beastify.js" })
+  .then(listenForClicks)
+  .catch(reportExecuteScriptError);

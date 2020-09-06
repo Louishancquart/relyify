@@ -17,23 +17,18 @@
     </div>
     <div id="add" class="button reset">Add</div>
 
-  <div id="add-form">
-    <form class="add-review" method="POST" action="http://localhost:8080/review">
-     <input type="hidden" name="videoId" value="https://www.youtube.com/watch?v=cWn6yUY9Etk" />
-      
-     <span><label for="true">True</label>
-      <input type="radio" id="true" name="true" value="true" >
-      <label for="false">False</label>
-      <input type="radio" id="false" name="true" value="false" checked>
+    <div id="add-form">
+      <form id="add-review-form" class="add-review" method="POST" action="http://localhost:8080/review">
+        <span>
+          <label for="trustworthy">Trustworthy content:</label>
+          <input type="checkbox" id="trustworthy" name="trustworthy">
+        </span>
+        <input type="text" id="referenceUrl" placeholder="https://www.moonhooch.com/" value="" />
+        <input type="text" id="description" placeholder="your reasons..." value="" />
+      </form>
 
-    </span>
-
-      <input type="hidden" name="reviewedMediaUrl" value="https://www.youtube.com/watch?v=cWn6yUY9Etk" />
-      <input type="text" name="referenceUrl" placeholder="https://www.moonhooch.com/" value=""/>
-      <input type="text" name="description" placeholder="your reasons..." value=""/>
-    </form>
-    <button type="submit" id="submit">submit</button>
-  </div>
+      <button id="submit">submit</button>
+    </div>
   </div>
 
 
@@ -43,6 +38,7 @@
     <p>Try a different page.</p>
   </div>
   <script src="choose_beast.js"></script>
+  <script src="../lib/jquery-3.5.1.min.js"></script>
 </body>
 
 </html>
