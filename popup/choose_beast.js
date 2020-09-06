@@ -29,21 +29,6 @@ function loadReviews() {
     });
 
   });
-
-  // $.ajax({
-  //   type: "GET",
-  //   url: "http://localhost:8080/reviews",
-  //   data: formData,
-  //   // success: function () { alert("success") },
-  //   // error: function () { alert("error: " +formData) },
-  //   dataType: "json",
-  //   contentType: "application/json"
-  // });
-
-  // $("button").click(function(){
-  //   
-  // }); 
-
 };
 
 
@@ -54,42 +39,7 @@ function loadReviews() {
  */
 function listenForClicks() {
 
-
-
-
-
   document.addEventListener("click", (e) => {
-
-
-    /**
-     * Given the name of a beast, get the URL to the corresponding image.
-     */
-    function beastNameToURL(beastName) {
-      switch (beastName) {
-        case "Frog":
-          return browser.extension.getURL("beasts/frog.jpg");
-        case "Snake":
-          return browser.extension.getURL("beasts/snake.jpg");
-        case "Turtle":
-          return browser.extension.getURL("beasts/turtle.jpg");
-      }
-    }
-
-    /**
-     * Insert the page-hiding CSS into the active tab,
-     * then get the beast URL and
-     * send a "beastify" message to the content script in the active tab.
-     */
-    function beastify(tabs) {
-      browser.tabs.insertCSS({ code: hidePage }).then(() => {
-        let url = beastNameToURL(e.target.textContent);
-        browser.tabs.sendMessage(tabs[0].id, {
-          command: "beastify",
-          beastURL: url
-        });
-      });
-    }
-
     /**
      * Remove the page-hiding CSS from the active tab,
      * send a "reset" message to the content script in the active tab.
@@ -109,25 +59,11 @@ function listenForClicks() {
       console.error(`Could not beastify: ${error}`);
     }
 
-    /**
-     * Get the active tab,
-     * then call "beastify()" or "reset()" as appropriate.
-     */
-    if (e.target.classList.contains("beast")) {
-      browser.tabs.query({ active: true, currentWindow: true })
-        .then(beastify)
-        .catch(reportError);
-    }
+   
 
-
-    else if (e.target.classList.contains("reset")) {
+    if (e.target.classList.contains("reset")) {
       let addButton = document.getElementById("add-form");
       addButton.style.display = (addButton.style.display == "block" ? "none" : "block")
-
-
-      // browser.tabs.query({active: true, currentWindow: true})
-      //   .then(reset)
-      //   .catch(reportError);
     }
 
     /**
@@ -156,16 +92,11 @@ function listenForClicks() {
         type: "POST",
         url: "http://localhost:8080/reviews",
         data: formData,
-        // success: function () { alert("success") },
-        // error: function () { alert("error: " +formData) },
+        error: function () { console.error(`Could not get reviews: ${error}`); },
         dataType: "json",
         contentType: "application/json"
       });
-
     }
-
-
-
   });
 }
 
