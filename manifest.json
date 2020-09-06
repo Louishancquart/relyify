@@ -7,7 +7,7 @@
   "description": "Adds a solid red border to all webpages matching mozilla.org.",
 
   "icons": {
-    "48": "icons/icon.png"
+    "48": "icons/defakatorg.jpg"
   },
 
   "content_scripts": [
@@ -24,7 +24,7 @@
   ],
 
   "browser_action": {
-    "default_icon": "icons/icon.png",
+    "default_icon": "icons/defakatorg.jpg",
     "theme_icons": [{
         "light": "icons/icon.png",
         "dark": "icons/icon.png",

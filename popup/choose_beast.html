@@ -8,22 +8,29 @@
 </head>
 
 <body>
+  <h1> <span>Defakat</span><span style="color: aqua;">org</span> </h1>
+  <h2> Let's defake the fakes!</h2>
   <div id="popup-content">
-    <div class="lineResult">
+  <div id="reviews-list"></div>
+    <!-- <div class="lineResult">
       <span>&uarr;</span>
       <span>123</span>
       <span>&darr;</span>
       <span><a href="#">My document title</a></span>
-    </div>
+    </div> -->
     <div id="add" class="button reset">Add</div>
 
+
+
+
+    
     <div id="add-form">
       <form id="add-review-form" class="add-review" method="POST" action="http://localhost:8080/review">
         <span>
           <label for="trustworthy">Trustworthy content:</label>
           <input type="checkbox" id="trustworthy" name="trustworthy">
         </span>
-        <input type="text" id="referenceUrl" placeholder="https://www.moonhooch.com/" value="" />
+        <input type="text" id="referenceUrl" placeholder="https://www.your-proof.here/document" value="" />
         <input type="text" id="description" placeholder="your reasons..." value="" />
       </form>
 

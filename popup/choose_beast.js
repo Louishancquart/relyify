@@ -6,6 +6,48 @@ const hidePage = `body > :not(.beastify-image) {
                     display: none;
                   }`;
 
+var data;
+var pageUrl = window.location.href
+
+
+
+
+/**
+ * gather reviews with an Ajax call
+ */
+function loadReviews() {
+  $.get("http://localhost:8080/reviews", function (data, status) {
+
+    data[pageUrl].forEach(element => {
+      $("#reviews-list").append(
+        "<div class='review-result'>"
+        + "<span><a>&uarr;</a></span>"
+        + "<span>" + element.votes + "</span>"
+        + "<span><a>&darr;</a></span>"
+        + "<span><a href=" + element.referenceUrl + ">" + element.description + "</a></span>"
+        + "</div>");
+    });
+
+  });
+
+  // $.ajax({
+  //   type: "GET",
+  //   url: "http://localhost:8080/reviews",
+  //   data: formData,
+  //   // success: function () { alert("success") },
+  //   // error: function () { alert("error: " +formData) },
+  //   dataType: "json",
+  //   contentType: "application/json"
+  // });
+
+  // $("button").click(function(){
+  //   
+  // }); 
+
+};
+
+
+
 /**
  * Listen for clicks on the buttons, and send the appropriate message to
  * the content script in the page.
@@ -99,15 +141,16 @@ function listenForClicks() {
      * submit form 
      */
     if (e.target.id == "submit") {
-      let contentUrl = window.location.href 
-      var formData = JSON.stringify({review: {
-        videoId: contentUrl,
-        type: $("#trustworthy").val() == "on",
-        reviewedMediaUrl: contentUrl,
-        referenceUrl: $("#referenceUrl").val(),
-        description: $("#description").val(),
-        votes: 0
-      }});
+      var formData = JSON.stringify({
+        review: {
+          videoId: pageUrl,
+          type: $("#trustworthy").val() == "on",
+          reviewedMediaUrl: pageUrl,
+          referenceUrl: $("#referenceUrl").val(),
+          description: $("#description").val(),
+          votes: 0
+        }
+      });
 
       $.ajax({
         type: "POST",
@@ -142,5 +185,6 @@ function reportExecuteScriptError(error) {
  * If we couldn't inject the script, handle the error.
  */
 browser.tabs.executeScript({ file: "/content_scripts/beastify.js" })
+  .then(loadReviews)
   .then(listenForClicks)
   .catch(reportExecuteScriptError);

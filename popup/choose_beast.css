@@ -2,6 +2,26 @@ html, body {
   width: 300px;
 }
 
+h1{
+  background-color: black ;
+  color: white;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 15pt;
+  margin: 0;
+  text-align: center;
+  padding: 5pt;
+}
+
+h2{
+  text-align: center;
+  background-color: grey ;
+  color: white;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 12pt;
+  margin: 0;
+}
+
+
 .hidden {
   display: none;
 }
@@ -9,6 +29,7 @@ html, body {
 #popup-content {
  font-family: Verdana, Geneva, sans-serif;
  font-size: 10pt;
+ margin-top: 5pt;
 }
 
  em {
@@ -58,6 +79,7 @@ html, body {
 }
 
 
-div #add-form{
+#add-form{
   display: none;
+  background-color: grey;
 }
