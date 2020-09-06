@@ -13,7 +13,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*","*://www.dailymotion.com/*"],
-      "js": ["relyify.js","beastify.js"]
+      "js": ["relyify.js","defakatorg.js"]
     }
   ],
 
@@ -30,12 +30,7 @@
         "dark": "icons/icon.png",
         "size": 32
     }],
-    "default_title": "Beastify",
-    "default_popup": "popup/choose_beast.html"
-  },
-
-  "web_accessible_resources": [
-    "beasts/*.jpg"
-  ]
-
+    "default_title": "Defakatorg",
+    "default_popup": "popup/defakatorg.html"
+  }
 }

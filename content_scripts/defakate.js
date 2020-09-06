@@ -1,4 +1,6 @@
-// var info = document.getElementById("info");
+(function() {
+
+  // var info = document.getElementById("info");
 // 
 // var relyify = document.createElement("div");
 // relyify.id ="relyify";
@@ -19,4 +21,5 @@ Just draw a border round the document.body.
 The color can be changed dynamically according to the controversy of the content
 */
 document.body.style.border = "5px solid red";
-
+// let pageUrl = window.location.href;
+})();

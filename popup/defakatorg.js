@@ -1,15 +1,11 @@
-/**
- * CSS to hide everything on the page,
- * except for elements that have the "beastify-image" class.
- */
-const hidePage = `body > :not(.beastify-image) {
-                    display: none;
-                  }`;
-
 var data;
-var pageUrl = window.location.href
-
-
+// var pageUrl = browser.tabs.ge/getCu
+let pageUrl ;
+// or the short variant
+browser.tabs.query({currentWindow: true, active: true}).then((tabs) => {
+  pageUrl = tabs[0].url; // Safe to assume there will only be one result
+  console.log(tab.url);
+}, console.error);
 
 
 /**
@@ -21,10 +17,10 @@ function loadReviews() {
     data[pageUrl].forEach(element => {
       $("#reviews-list").append(
         "<div class='review-result'>"
-        + "<span><a>&uarr;</a></span>"
+        + "<span><a href='#'>&uarr;</a></span>"
         + "<span>" + element.votes + "</span>"
-        + "<span><a>&darr;</a></span>"
-        + "<span><a href=" + element.referenceUrl + ">" + element.description + "</a></span>"
+        + "<span><a href='#'>&darr;</a></span>"
+        + "<span><a href=" + element.referenceUrl + " class='review-description'>" + element.description + "</a></span>"
         + "</div>");
     });
 
@@ -42,12 +38,12 @@ function listenForClicks() {
   document.addEventListener("click", (e) => {
     /**
      * Remove the page-hiding CSS from the active tab,
-     * send a "reset" message to the content script in the active tab.
+     * send a "add" message to the content script in the active tab.
      */
-    function reset(tabs) {
+    function addButton(tabs) {
       browser.tabs.removeCSS({ code: hidePage }).then(() => {
         browser.tabs.sendMessage(tabs[0].id, {
-          command: "reset",
+          command: "add",
         });
       });
     }
@@ -56,12 +52,12 @@ function listenForClicks() {
      * Just log the error to the console.
      */
     function reportError(error) {
-      console.error(`Could not beastify: ${error}`);
+      console.error(`Could not review this page: ${error}`);
     }
 
-   
 
-    if (e.target.classList.contains("reset")) {
+
+    if (e.target.classList.contains("add")) {
       let addButton = document.getElementById("add-form");
       addButton.style.display = (addButton.style.display == "block" ? "none" : "block")
     }
@@ -92,6 +88,16 @@ function listenForClicks() {
         type: "POST",
         url: "http://localhost:8080/reviews",
         data: formData,
+        success: function () {
+          $("#submit-success").show();
+          setTimeout(function () {
+            $("#submit-success").hide();
+            $("#add-form").hide()
+            $("#reviews-list").empty()
+            loadReviews()
+          }, 1000); // timeout: 1s
+
+        },
         error: function () { console.error(`Could not get reviews: ${error}`); },
         dataType: "json",
         contentType: "application/json"
@@ -107,7 +113,7 @@ function listenForClicks() {
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
   document.querySelector("#error-content").classList.remove("hidden");
-  console.error(`Failed to execute beastify content script: ${error.message}`);
+  console.error(`Failed to defakate content script: ${error.message}`);
 }
 
 /**
@@ -115,7 +121,7 @@ function reportExecuteScriptError(error) {
  * and add a click handler.
  * If we couldn't inject the script, handle the error.
  */
-browser.tabs.executeScript({ file: "/content_scripts/beastify.js" })
+browser.tabs.executeScript({ file: "/content_scripts/defakate.js" })
   .then(loadReviews)
   .then(listenForClicks)
   .catch(reportExecuteScriptError);

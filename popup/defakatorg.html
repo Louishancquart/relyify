@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="choose_beast.css" />
+  <link rel="stylesheet" href="defakatorg.css" />
 </head>
 
 <body>
@@ -12,18 +12,14 @@
   <h2> Let's defake the fakes!</h2>
   <div id="popup-content">
   <div id="reviews-list"></div>
-    <!-- <div class="lineResult">
+    <!-- <div class="review-result">
       <span>&uarr;</span>
       <span>123</span>
       <span>&darr;</span>
       <span><a href="#">My document title</a></span>
     </div> -->
-    <div id="add" class="button reset">Add</div>
+    <div id="add" class="button add">Add</div>
 
-
-
-
-    
     <div id="add-form">
       <form id="add-review-form" class="add-review" method="POST" action="http://localhost:8080/review">
         <span>
@@ -36,15 +32,19 @@
 
       <button id="submit">submit</button>
     </div>
+
+    <div id="submit-success">
+      Thanks for sharing!  
+    </div>
   </div>
 
 
 
   <div id="error-content" class="hidden">
-    <p>Can't relyify this web page.</p>
+    <p>Can't review this web page.</p>
     <p>Try a different page.</p>
   </div>
-  <script src="choose_beast.js"></script>
+  <script src="defakatorg.js"></script>
   <script src="../lib/jquery-3.5.1.min.js"></script>
 </body>
 

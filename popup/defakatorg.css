@@ -62,19 +62,11 @@ h2{
   cursor: pointer;
 }
 
-.beast:hover {
-  background-color: #CFF2F2;
-}
-
-.beast {
-  background-color: #E5F2F2;
-}
-
-.reset {
+.add {
   background-color: #FBFBC9;
 }
 
-.reset:hover {
+.add:hover {
   background-color: #EAEA9D;
 }
 
@@ -82,4 +74,20 @@ h2{
 #add-form{
   display: none;
   background-color: grey;
+}
+
+#submit-success {
+  display: none;
+  background-color: aqua;
+  text-align: center;
+}
+
+.review-result span a{
+  text-decoration: none;
+  margin: 7px;
+  /* background: yellow; */
+}
+
+.review-description {
+  margin-left: 20px;
 }
