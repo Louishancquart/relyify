@@ -1,0 +1,93 @@
+html, body {
+  width: 300px;
+}
+
+h1{
+  background-color: black ;
+  color: white;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 15pt;
+  margin: 0;
+  text-align: center;
+  padding: 5pt;
+}
+
+h2{
+  text-align: center;
+  background-color: grey ;
+  color: white;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 12pt;
+  margin: 0;
+}
+
+
+.hidden {
+  display: none;
+}
+
+#popup-content {
+ font-family: Verdana, Geneva, sans-serif;
+ font-size: 10pt;
+ margin-top: 5pt;
+}
+
+ em {
+  float: right;
+  font-weight: bold;
+  font-size: 15pt;
+  /* text-align: center;
+  margin: auto; */
+}
+
+ em a{
+  text-decoration: none;
+}
+
+.add-review input[type=text]{
+  margin: 10px;
+  width: 250px;
+}
+
+#submit{
+  margin: 10px;
+  float: right;
+}
+
+.button {
+  margin: 3% auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.add {
+  background-color: #FBFBC9;
+}
+
+.add:hover {
+  background-color: #EAEA9D;
+}
+
+
+#add-form{
+  display: none;
+  background-color: grey;
+}
+
+#submit-success {
+  display: none;
+  background-color: aqua;
+  text-align: center;
+}
+
+.review-result span a{
+  text-decoration: none;
+  margin: 7px;
+  /* background: yellow; */
+}
+
+.review-description {
+  margin-left: 20px;
+}
